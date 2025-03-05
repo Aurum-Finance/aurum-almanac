@@ -1,0 +1,51 @@
+---
+title: 'Risk And Management'
+---
+## Collateralization Safeguards
+
+Aurum's primary defense against market volatility lies in its conservative collateralization requirements:
+
+- **200% Minimum Ratio**: All positions must maintain at least 200% collateralization (2:1 ratio of collateral to debt)
+- **No Liquidation Mechanism**: Unlike traditional lending protocols, Aurum does not implement liquidations
+- **Self-Healing Positions**: As yield continuously reduces debt, positions naturally become more secure over time
+- **Conservative LTV**: The 50% maximum loan-to-value ratio provides substantial buffer against market fluctuations
+
+## Oracle Implementation
+
+Reliable price data is critical to protocol security. Aurum implements:
+
+- **Dual Oracle System**:
+   - Primary: Switchboard provides main price feeds
+   - Secondary: Pyth serves as verification and fallback
+   - Cross-validation logic ensures price accuracy
+- **Price Update Frequency**: Regular price updates ensure the protocol operates with current market data
+- **Manipulation Protection**: Outlier detection and time-weighted averaging prevent flash crashes or manipulation from affecting protocol operations
+
+## Exposure Limits
+
+To manage protocol-wide risk, Aurum implements several capacity controls:
+
+- **Total Deposit Cap**: Maximum SOL that can be deposited into the protocol
+- **Per-User Limits**: Caps on individual position sizes to prevent concentration risk
+- **Utilization Targets**: Managed allocation of deposits to different yield strategies
+- **TVL Growth Rate**: Controlled expansion of protocol capacity to ensure stability
+
+## Drift Vault Risk Management
+
+By integrating with Drift's vault system, Aurum inherits several proven risk management features:
+
+- **Strategy Diversification**: Exposure across multiple yield sources within Drift's ecosystem
+- **Smart Contract Security**: Leveraging Drift's extensively audited and battle-tested infrastructure
+- **Liquidity Management**: Careful balance between yield generation and withdrawal capabilities
+- **Monitoring Systems**: Continuous oversight of vault performance and risk metrics
+
+## Contingency Planning
+
+Aurum prepares for adverse scenarios through a comprehensive contingency framework:
+
+- **Emergency Shutdown**: Protocol pause capability if critical issues are detected
+- **Graceful Withdrawal Process**: Structured wind-down procedure to return user funds if necessary
+- **Reserve Fund**: Planned allocation of protocol revenue to an insurance fund for addressing unforeseen events
+- **Response Team**: Dedicated technical team available to address emergencies
+
+This multi-layered approach to risk management ensures that Aurum can withstand market turbulence while protecting user assets and maintaining protocol stability.
