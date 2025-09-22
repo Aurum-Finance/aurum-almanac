@@ -1,50 +1,35 @@
 ---
 title: 'User Economics'
 ---
-## Deposit & Borrow Mechanics
+## How Much Can You Borrow?
 
-Aurum's economic model is designed for simplicity and user benefit, with transparent parameters:
+**Simple math:** deposit SOL, borrow up to half its value.
 
-- **Collateralization Ratio**: Users may borrow up to 50% of their deposited collateral value, maintaining a minimum 200% collateralization ratio.
-- **Example Position**:
-   - Deposit: 100 SOL (~$12,000 at current prices)
-   - Maximum Borrow: 50 SOL worth of aurSOL (~$6,000)
-   - Initial Collateralization: 200%
-- **Position Evolution**: As yield accrues, the debt balance decreases while collateral remains unchanged, gradually increasing the collateralization ratio and improving position security.
+Let's use real numbers. You deposit 100 SOL. You can borrow 50 SOL worth of aurSOL. Your collateralization starts at 200%.
+As yield rolls in, your debt drops but your collateral stays the same. Your position gets safer over time, not riskier.
 
-## Fee Structure
+## What Does It Cost?
 
-Aurum maintains a straightforward fee structure designed to balance user value with protocol sustainability:
+We keep it simple:
+1% upfront fee when you borrow. Borrow 50 SOL worth? Pay 0.5 SOL. One time, done.
+80/20 yield split. Your deposit makes 10 SOL this year? 8 SOL pays down your debt, 2 SOL goes to protocol operations.
+Nothing else. No deposit fees. No withdrawal fees. No "maintenance" fees. Just Solana network costs when you transact.
 
-- **Initial Borrow Fee**: 1% of borrowed amount (e.g., 0.5 SOL on a 50 SOL borrow)
-- **Yield Allocation**: 80% of generated yield applies to debt reduction, 20% to protocol operations
-- **No Hidden Costs**: No deposit fees, withdrawal fees, or maintenance fees
-- **Standard Transaction Fees**: Only standard Solana network fees apply for interactions with the protocol
+### Show Me the Numbers
+You deposit 100 SOL. Let's say vaults typically yield 8% annually. Here's your year:
 
-## User Benefits Analysis
+- Your SOL generates ~8 SOL in yield
+- ~6.4 SOL reduces your debt (80%)
+- ~1.6 SOL goes to the protocol (20%)
+- You paid 0.5 SOL upfront to borrow
 
-For a typical user with a 100 SOL deposit generating 8% annual yield:
+Your 50 SOL debt becomes 43.6 SOL. Without doing anything.
 
-- **Annual Yield Generation**: ~8 SOL
-- **Debt Reduction**: ~6.4 SOL (80% of yield)
-- **Protocol Revenue**: ~1.6 SOL (20% of yield)
-- **Initial Borrow Fee**: 0.5 SOL (one-time)
+## Getting Out
 
-### Key Benefits:
-
-1. **Passive Debt Reduction**: Loans that pay themselves down without additional capital
-2. **No Liquidation Risk**: Positions cannot be liquidated due to market volatility
-3. **Capital Efficiency**: Access to 50% of deposited value while maintaining full SOL exposure
-4. **Flexible Duration**: No fixed terms or repayment schedules
-5. **Simplified Experience**: No need to actively manage complex yield strategies
-
-## Exit Options
-
-Users enjoy flexible exit options to suit different circumstances:
-
-- **Maintain Position**: Allow yield to continuously reduce debt over time
-- **Partial Withdrawal**: Withdraw a portion of collateral (subject to maintaining minimum collateralization)
-- **Full Repayment**: Repay remaining aurSOL debt and withdraw all collateral
-- **Natural Completion**: Once debt is fully paid off by yield, withdraw full collateral
-
-This economic structure creates alignment between user and protocol interests, with both benefiting from successful yield generation and long-term engagement.
+**You've got options:**
+- Do nothing. Let yield eat away at your debt. Eventually it hits zero.
+- Withdraw some. As long as you stay above 200% collateralization, take what you need.
+- Pay it off. Buy back your aurSOL debt, get all your collateral back.
+- Wait it out. Once yield pays everything off, your full collateral is yours again.
+- No penalties. No lockups. Your money, your timeline.
