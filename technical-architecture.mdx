@@ -2,32 +2,19 @@
 title: 'Technical Architecture'
 ---
 
-## Vault System
+## The Vault System
 
-Aurum's infrastructure is built around a robust vault system that securely manages deposited assets while enabling the minting and management of aurSOL.
+Aurum runs on three main parts that work together like a Swiss watch:
 
-### Key Components:
+- The Vault Controller is the brain. It handles your deposits, tracks your position, and makes sure aurSOL gets minted when you borrow. Think of it as the bouncer, the accountant, and the manager all rolled into one smart contract.
+- Position Management keeps tabs on everyone. Your collateral, your debt, your accumulated yield, it's all tracked here. Every Satoshi accounted for.
+- The Yield Capture System is where the magic happens. It talks to Drift's vaults, grabs your yield, and splits it: 80% to pay your debt, 20% to keep the lights on.
 
-- **Vault Controller**: The primary program that governs all user interactions with the protocol, managing deposits, withdrawals, and the minting/burning of aurSOL. The controller maintains the state of all positions and enforces protocol parameters.
-- **Position Management**: Each user's deposit and borrowing activity is tracked through a dedicated position account, maintaining precise records of collateral amounts, outstanding debt, and accumulated yield.
-- **Yield Capture System**: A specialized component that interfaces with Drift vaults to harvest generated yield and allocate it appropriately between debt reduction and protocol revenue.
+## Safety First (Actually)
 
-## Safety Controls
-
-To ensure protocol stability and protect user assets, Aurum implements several critical safety mechanisms:
-
-- **200% Minimum Collateralization**: All positions must maintain at least 200% collateralization, providing a substantial buffer against market volatility.
-- **Dual Oracle System**: Price data is sourced from both Switchboard and Pyth, with validation logic to prevent oracle manipulation or failures from affecting protocol operations.
-- **Circuit Breakers**: Automatic activity suspension triggers that activate during extreme market conditions or detected anomalies.
-- **Parameter Governance**: Key protocol parameters are managed through a controlled governance process to prevent sudden changes that could destabilize the system.
-
-## Drift Integration
-
-Aurum leverages Drift's battle-tested vault infrastructure for yield generation:
-
-- **Direct Vault Connection**: SOL deposits are allocated to Drift's yield-generating vaults through secure program interfaces.
-- **Yield Strategy**: Deposits benefit from Drift's sophisticated yield strategies while maintaining the security guarantees of the Aurum protocol.
-- **Data Flow**: Regular communication between Aurum and Drift ensures accurate yield information and proper accounting of all generated returns.
-- **Withdrawal Pipeline**: A structured process for transitioning assets from Drift vaults back to Aurum when users request withdrawals, balancing security with timely access.
-
-All components are designed with security-first principles, extensive error handling, and defense-in-depth strategies to protect user assets against both technical failures and malicious attacks.
+We built this thing to survive anything:
+- 200% collateralization minimum. You need $200 of SOL to borrow $100. That's a huge cushion against price swings.
+- Two oracle sources. We use both Switchboard and Pyth. If one goes wonky, the other catches it. No flash crash disasters here.
+- Automatic circuit breakers. If things get weird, the protocol pauses. Better safe than sorry.
+- No surprise changes. Protocol parameters only change through governance. No rug pulls, no "oops we changed the rules."
+- Every line of code assumes something will go wrong. We built for the worst case, so you get the best case.
