@@ -13,7 +13,6 @@
       {
         "group": "Get Started",
         "pages": [
-          "table-of-contents",
           "the-aurum-almanac",
           "protocol-summary",
           "technical-architecture",
