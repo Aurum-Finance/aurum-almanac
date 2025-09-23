@@ -1,51 +1,53 @@
 ---
 title: 'Risk And Management'
 ---
-## Collateralization Safeguards
 
-Aurum's primary defense against market volatility lies in its conservative collateralization requirements:
+## Collateral Protection
 
-- **200% Minimum Ratio**: All positions must maintain at least 200% collateralization (2:1 ratio of collateral to debt)
-- **No Liquidation Mechanism**: Unlike traditional lending protocols, Aurum does not implement liquidations
-- **Self-Healing Positions**: As yield continuously reduces debt, positions naturally become more secure over time
-- **Conservative LTV**: The 50% maximum loan-to-value ratio provides substantial buffer against market fluctuations
+We built conservative. Here's how we protect your position:
 
-## Oracle Implementation
+**200% minimum ratio.** You need twice the collateral value of what you borrow. SOL drops 40%? You're still safe.
 
-Reliable price data is critical to protocol security. Aurum implements:
+**No liquidations. Period.** We don't have liquidation code. Can't liquidate what doesn't exist.
 
-- **Dual Oracle System**:
-   - Primary: Switchboard provides main price feeds
-   - Secondary: Pyth serves as verification and fallback
-   - Cross-validation logic ensures price accuracy
-- **Price Update Frequency**: Regular price updates ensure the protocol operates with current market data
-- **Manipulation Protection**: Outlier detection and time-weighted averaging prevent flash crashes or manipulation from affecting protocol operations
+**Positions improve over time.** Every bit of yield makes your position safer. Time is on your side.
 
-## Exposure Limits
+**50% max borrow.** You can only borrow half your collateral's value. Plenty of breathing room.
 
-To manage protocol-wide risk, Aurum implements several capacity controls:
+## Getting Prices Right
 
-- **Total Deposit Cap**: Maximum SOL that can be deposited into the protocol
-- **Per-User Limits**: Caps on individual position sizes to prevent concentration risk
-- **Utilization Targets**: Managed allocation of deposits to different yield strategies
-- **TVL Growth Rate**: Controlled expansion of protocol capacity to ensure stability
+Bad price data kills protocols. We use two oracles:
 
-## Drift Vault Risk Management
+Switchboard gives us primary prices. Pyth double-checks and serves as backup. If prices look weird, we catch it. Time-weighted averaging smooths out spikes. No flash crash can touch your position.
 
-By integrating with Drift's vault system, Aurum inherits several proven risk management features:
+## Managing Protocol Risk
 
-- **Strategy Diversification**: Exposure across multiple yield sources within Drift's ecosystem
-- **Smart Contract Security**: Leveraging Drift's extensively audited and battle-tested infrastructure
-- **Liquidity Management**: Careful balance between yield generation and withdrawal capabilities
-- **Monitoring Systems**: Continuous oversight of vault performance and risk metrics
+We're not trying to eat the world on day one:
 
-## Contingency Planning
+**Deposit caps** keep growth controlled. We'll raise them as we prove the system.
 
-Aurum prepares for adverse scenarios through a comprehensive contingency framework:
+**Per-user limits** prevent whales from dominating the protocol.
 
-- **Emergency Shutdown**: Protocol pause capability if critical issues are detected
-- **Graceful Withdrawal Process**: Structured wind-down procedure to return user funds if necessary
-- **Reserve Fund**: Planned allocation of protocol revenue to an insurance fund for addressing unforeseen events
-- **Response Team**: Dedicated technical team available to address emergencies
+**Diversified yield sources** spread risk across multiple protocols.
 
-This multi-layered approach to risk management ensures that Aurum can withstand market turbulence while protecting user assets and maintaining protocol stability.
+**Controlled growth** means we expand carefully, not recklessly.
+
+## Yield Source Security
+
+We only integrate with proven protocols:
+
+Each yield source we use has been audited and battle-tested in production. We monitor performance across all integrated vaults constantly. If a yield source underperforms or shows risk, we can reallocate. Multiple integrations mean no single point of failure.
+
+We're not experimenting with your money.
+
+## When Things Go Wrong
+
+Hope for the best, plan for the worst:
+
+**Emergency pause button** if we detect issues. Better to pause than lose funds.
+
+**Clean withdrawal process** if we need to wind down. Everyone gets their money back.
+
+**On-call team** ready to respond to emergencies.
+
+We can't predict everything, but we can prepare for anything.
